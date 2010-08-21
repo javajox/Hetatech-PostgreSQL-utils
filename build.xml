@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Hetatech PostgreSQL Utils" default="standard" basedir=".">
+
+  <property name="src" value="src"/>
+  <property name="bin" value="bin"/>
+  <property name="lib" value="lib"/>
+  
+  <target name="clean" description="Clean the building environment">
+  	<echo>Cleaning the building environment</echo>
+  	<delete dir="${bin}"/>
+  </target>
+  
+  <target name="prepare" description="Prepare the building environment">
+  	<echo>Preparing the building environment</echo>
+  	<mkdir dir="${bin}"/>
+  </target>
+
+  <target name="compile">
+    <echo>Compiling the system...</echo>
+    <javac srcdir="${src}" destdir="${bin}" source="1.6">
+    </javac>
+  </target>
+
+  <target name="jar">
+    <echo>Packing the system into a .jar file</echo>
+    <jar destfile="./hetatech_pg_utils.jar" basedir="${bin}">
+    </jar>
+  </target>
+
+  <target name="standard" depends="clean, prepare, compile, jar"/>
+
+</project>
